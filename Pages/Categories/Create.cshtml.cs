@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Dan_Daniela_Lab2.Data;
 using Dan_Daniela_Lab2.Models;
 
-namespace Dan_Daniela_Lab2.Pages.Publisherss
+namespace Dan_Daniela_Lab2.Pages.Categories
 {
     public class CreateModel : PageModel
     {
@@ -21,12 +21,11 @@ namespace Dan_Daniela_Lab2.Pages.Publisherss
 
         public IActionResult OnGet()
         {
-            ViewData["PublisherID"] = new SelectList(_context.Set<Publisher>(), "ID", "PublisherName");
             return Page();
         }
 
         [BindProperty]
-        public Publisher Publisher { get; set; }
+        public Category Category { get; set; }
         
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
@@ -37,7 +36,7 @@ namespace Dan_Daniela_Lab2.Pages.Publisherss
                 return Page();
             }
 
-            _context.Publisher.Add(Publisher);
+            _context.Category.Add(Category);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
